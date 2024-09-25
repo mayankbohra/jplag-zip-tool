@@ -16,7 +16,7 @@ function UploadPage() {
 
     const checkFolders = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/upload/check-folders');
+            const response = await fetch('https://jplag-zip-tool.onrender.com/api/upload/check-folders');
             const data = await response.json();
             if (data.uploadsEmpty && data.resultsEmpty) {
                 setShowUploadButton(true);
@@ -46,7 +46,7 @@ function UploadPage() {
         toast.info('Uploading files...');
 
         try {
-            const response = await fetch('http://localhost:5000/api/upload', {
+            const response = await fetch('https://jplag-zip-tool.onrender.com/api/upload', {
                 method: 'POST',
                 body: formData,
             });
@@ -69,7 +69,7 @@ function UploadPage() {
 
     const handleClearFiles = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/upload/clear-files', {
+            const response = await fetch('https://jplag-zip-tool.onrender.com/api/upload/clear-files', {
                 method: 'DELETE',
             });
             if (response.ok) {
@@ -139,7 +139,7 @@ function UploadPage() {
                                                 <tr key={index}>
                                                     <td>{file}</td>
                                                     <td>
-                                                        <a href={`http://localhost:5000/results/${file}`} className="btn btn-link" download>
+                                                        <a href={`https://jplag-zip-tool.onrender.com/results/${file}`} className="btn btn-link" download>
                                                             Download
                                                         </a>
                                                     </td>
@@ -161,7 +161,7 @@ function UploadPage() {
                         {uploading && <div className="text-center mt-3"><p>Uploading...</p></div>}
                     </div>
                     <p className="text-center mt-4">
-                        Made with ❤️ by <a href="https://www.linkedin.com/in/rsoran/" target="_blank" rel="noopener noreferrer">Ravindra</a> & <a href="https://mayankbohra.netlify.app/" target="_blank" rel="noopener noreferrer">Mayank</a>
+                        Made with ❤️ by <a href="https://mayankbohra.netlify.app/" target="_blank" rel="noopener noreferrer">Mayank</a>
                     </p>
                 </div>
             </div>

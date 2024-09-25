@@ -10,7 +10,7 @@ function LoginPage() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch('http://localhost:5000/api/auth/login', {
+        const response = await fetch('https://jplag-zip-tool.onrender.com/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ function LoginPage() {
                         </form>
                         {error && <p className="text-danger mt-3">{error}</p>}
                         <p className="text-center mt-4">
-                            Made with ❤️ by <a href="https://www.linkedin.com/in/rsoran/" target="_blank" rel="noopener noreferrer">Ravindra</a> & <a href="https://mayankbohra.netlify.app/" target="_blank" rel="noopener noreferrer">Mayank</a>
+                            Made with ❤️ by <a href="https://mayankbohra.netlify.app/" target="_blank" rel="noopener noreferrer">Mayank</a>
                         </p>
                     </div>
                 </div>
