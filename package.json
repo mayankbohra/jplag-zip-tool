@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "start": "concurrently \"cd frontend && npm start\" \"cd backend && node server.js\""
+    },
+    "dependencies": {
+        "uuid": "^10.0.0"
+    }
+}
