@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Log the Java version
+echo "Checking Java installation..."
+/usr/bin/java -version >> /tmp/java_version.log 2>&1
+
 # Define variables
 JPLAG_JAR="./backend/scripts/jplag.jar"
 SUBMISSION_DIR="./backend/uploads"
