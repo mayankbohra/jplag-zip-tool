@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: your-service-name
+    env: node
+    plan: starter
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      JAVA_VERSION: "11"  # Specify the Java version if applicable
