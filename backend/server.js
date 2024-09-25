@@ -13,10 +13,13 @@ const authRoutes = require('./routes/auth');
 const uploadRoutes = require('./routes/upload');
 
 app.use('/api/auth', authRoutes);
+console.log("Auth routes configured");
+
 app.use('/api/upload', uploadRoutes);
+console.log("Upload routes configured");
 
 app.use((err, req, res, next) => {
-    console.error(err.stack);
+    console.log("Status endpoint accessed");
     res.status(500).send({ message: 'Something broke!' });
 });
 
