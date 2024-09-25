@@ -23,26 +23,27 @@ router.post('/', upload.array('files'), (req, res) => {
         return res.status(400).send({ message: 'No files uploaded.' });
     }
 
-    let batFile = '';
+    let scriptFile = '';
     switch (language) {
         case 'python':
-            batFile = path.join(__dirname, '../scripts/python.sh');
+            scriptFile = path.join(__dirname, '../scripts/python.sh');
             break;
         case 'c':
-            batFile = path.join(__dirname, '../scripts/c.sh');
+            scriptFile = path.join(__dirname, '../scripts/c.sh');
             break;
         case 'cpp':
-            batFile = path.join(__dirname, '../scripts/cpp.sh');
+            scriptFile = path.join(__dirname, '../scripts/cpp.sh');
             break;
         case 'java':
-            batFile = path.join(__dirname, '../scripts/java.sh');
+            scriptFile = path.join(__dirname, '../scripts/java.sh');
             break;
         default:
             return res.status(400).send({ message: 'Unsupported language' });
     }
 
     try {
-        const command = `cmd.exe /c "${batFile}"`;
+        // Using bash command instead of cmd.exe for Linux compatibility
+        const command = `bash "${scriptFile}"`;
         execSync(command, { stdio: 'inherit' });
 
         fs.readdir(path.join(__dirname, '../results/'), (err, files) => {
@@ -53,6 +54,7 @@ router.post('/', upload.array('files'), (req, res) => {
             res.send({ message: 'Files uploaded successfully', zipFiles });
         });
     } catch (error) {
+        console.error('Error running the script:', error);
         return res.status(500).send({ message: 'Error running the script', error: error.message });
     }
 });
