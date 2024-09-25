@@ -61,19 +61,27 @@ router.get('/check-folders', (req, res) => {
     const uploadsDir = path.join(__dirname, '../uploads/');
     const resultsDir = path.join(__dirname, '../results/');
 
+    console.log("Checking folders...");
+
     fs.readdir(uploadsDir, (err, uploads) => {
         if (err) {
-            return res.status(500).send({ message: 'Error reading uploads directory' });
+            console.error('Error reading uploads directory:', err);
+            return res.status(500).send({ message: 'Error reading uploads directory', error: err.message });
         }
 
         fs.readdir(resultsDir, (err, results) => {
             if (err) {
-                return res.status(500).send({ message: 'Error reading results directory' });
+                console.error('Error reading results directory:', err);
+                return res.status(500).send({ message: 'Error reading results directory', error: err.message });
             }
 
             const uploadsEmpty = uploads.length === 0;
             const resultsEmpty = results.length === 0;
             const zipFiles = results.filter(file => file.endsWith('.zip'));
+
+            console.log("Uploads directory empty:", uploadsEmpty);
+            console.log("Results directory empty:", resultsEmpty);
+            console.log("Zip files found:", zipFiles);
 
             res.send({ uploadsEmpty, resultsEmpty, zipFiles });
         });
