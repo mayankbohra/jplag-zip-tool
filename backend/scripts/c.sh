@@ -5,7 +5,7 @@ if ! command -v java &> /dev/null; then
     apt-get update && apt-get install -y openjdk-11-jdk
 fi
 
-JPLAG_JAR="./backend/scripts/jplag.jar"
+JPLAG_JAR="/opt/render/project/src/backend/scripts/"
 SUBMISSION_DIR="./backend/uploads"
 RESULT_DIR="./backend/results" 
 LANGUAGE="c"
