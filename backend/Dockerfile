@@ -10,7 +10,7 @@ WORKDIR /opt/render/project/src/backend
 # Copy your project files
 COPY . .
 
-COPY ./backend/scripts/jplag.jar /opt/render/project/src/backend/scripts/
+COPY ./scripts/jplag.jar /opt/render/project/src/backend/scripts/
 
 # Install dependencies
 RUN npm install
