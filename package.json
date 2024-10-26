@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "start": "concurrently \"cd frontend && npm start\" \"cd api && node server.js\""
+        "start": "concurrently \"cd frontend && npm start\""
     },
     "dependencies": {
         "uuid": "^10.0.0"
