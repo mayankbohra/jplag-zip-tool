@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Define variables
-JPLAG_JAR="./backend/scripts/jplag.jar"
-SUBMISSION_DIR="./backend/uploads"
-RESULT_DIR="./backend/results"
+JPLAG_JAR="./scripts/jplag.jar"
+SUBMISSION_DIR="./uploads"
+RESULT_DIR="./results"
 LANGUAGE="python3"
 
 # Run the JPlag command

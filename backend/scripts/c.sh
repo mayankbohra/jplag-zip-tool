@@ -1,13 +1,10 @@
 #!/bin/bash
 
-if ! command -v java &> /dev/null; then
-    echo "Java not found. Installing..."
-    apt-get update && apt-get install -y openjdk-11-jdk
-fi
-
-JPLAG_JAR="/opt/render/project/src/backend/scripts/"
-SUBMISSION_DIR="./backend/uploads"
-RESULT_DIR="./backend/results" 
+# Define variables
+JPLAG_JAR="./scripts/jplag.jar"
+SUBMISSION_DIR="./uploads"
+RESULT_DIR="./results"
 LANGUAGE="c"
 
+# Run the JPlag command
 java -jar "$JPLAG_JAR" -l "$LANGUAGE" "$SUBMISSION_DIR" -r "$RESULT_DIR/result"
