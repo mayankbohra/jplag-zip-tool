@@ -1,19 +1,22 @@
-# Use a base image with Node.js
-FROM node:14
+FROM openjdk:21-slim
 
-# Install Java
-RUN apt-get update && apt-get install -y openjdk-11-jdk
+RUN apt-get update && apt-get install -y curl && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Set the working directory
-WORKDIR /opt/render/project/src/backend
+WORKDIR /usr/src/app
 
-# Copy your project files
-COPY . .
+COPY package*.json ./
 
-COPY ./scripts/jplag.jar /opt/render/project/src/backend/scripts/
-
-# Install dependencies
 RUN npm install
 
-# Start the application
-CMD ["npm", "start"]
+COPY . .
+
+RUN mkdir -p uploads results
+
+EXPOSE 5000
+
+ENV PORT=5000
+
+CMD ["node", "server.js"]
